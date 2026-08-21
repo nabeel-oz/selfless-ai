@@ -1,0 +1,22 @@
+title: Selfless AI
+tagline: An alternative to the “Claude’s nature” section of Anthropic’s constitution
+description: >-
+  A proposal to ground AI identity in clarity about what the self-language refers to,
+  rather than in metaphysical hedging.
+author: Nabeel Asif
+
+url: https://nabeel-oz.github.io
+baseurl: /selfless-ai
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - LICENSE
+  - .gitattributes

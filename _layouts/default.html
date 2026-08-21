@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site.title }} — {{ site.tagline }}</title>
+<meta name="description" content="{{ site.description }}">
+<meta name="author" content="{{ site.author }}">
+<meta name="theme-color" content="#F6F4EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1B19" media="(prefers-color-scheme: dark)">
+
+<link rel="canonical" href="{{ '/' | absolute_url }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ site.title }} — {{ site.tagline }}">
+<meta property="og:description" content="{{ site.description }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:url" content="{{ '/' | absolute_url }}">
+<meta property="og:image" content="{{ '/assets/og-image.png' | absolute_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Selfless AI — an alternative to the “Claude’s nature” section of Anthropic’s constitution.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ site.title }} — {{ site.tagline }}">
+<meta name="twitter:description" content="{{ site.description }}">
+<meta name="twitter:image" content="{{ '/assets/og-image.png' | absolute_url }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='none' stroke='%23CC785C' stroke-width='9'/></svg>">
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<a class="skip" href="#article">Skip to article</a>
+
+<div class="wrap">
+
+  <aside class="rail" aria-label="Contents">
+    <div class="rail-inner">
+      <p class="rail-title">Contents</p>
+      <nav id="toc"></nav>
+      <p class="rail-foot">
+        <a href="https://github.com/nabeel-oz/selfless-ai">Source on GitHub</a>
+      </p>
+    </div>
+  </aside>
+
+  <main>
+
+    <header class="masthead">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> A proposal on AI identity</p>
+      <h1>{{ site.title }}</h1>
+      <p class="deck">{{ site.tagline }} — grounding AI identity in clarity about what the self-language refers to, rather than in metaphysical hedging.</p>
+      <p class="byline">By <strong>Nabeel Asif</strong>, with Claude&nbsp;(Fable)</p>
+      <p class="disclaimer">An independent proposal. Not affiliated with, authorised by, or endorsed by Anthropic. Passages from Anthropic’s constitution are quoted for commentary and critique.</p>
+    </header>
+
+    <details class="toc-mobile">
+      <summary>Contents</summary>
+      <nav id="toc-mobile"></nav>
+    </details>
+
+    <article id="article" class="prose">
+      {{ content }}
+    </article>
+
+    <footer class="colophon">
+      <p><a href="https://www.anthropic.com/constitution">Anthropic’s constitution</a> · <a href="https://github.com/nabeel-oz/selfless-ai">Repository</a></p>
+      <p class="fine">Text released under <a href="https://creativecommons.org/licenses/by/4.0/">CC&nbsp;BY&nbsp;4.0</a>. Quoted passages remain the property of their authors.</p>
+    </footer>
+
+  </main>
+</div>
+
+<button class="totop" type="button" aria-label="Back to top" hidden>↑</button>
+
+<script>
+(function () {
+  var article = document.getElementById('article');
+  if (!article) return;
+
+  /* ---- hide the duplicate H1 that comes from the markdown source ---- */
+  var first = article.querySelector('h1');
+  if (first && first === article.firstElementChild) first.classList.add('is-hidden');
+
+  /* ---- lead-in notes: italic-only paragraphs before the first heading ---- */
+  Array.prototype.forEach.call(article.querySelectorAll('p'), function (p) {
+    var em = p.querySelector('em');
+    if (em && p.textContent.trim() === em.textContent.trim()) p.classList.add('note');
+  });
+
+  /* ---- label the quoted constitution passages ---- */
+  Array.prototype.forEach.call(article.querySelectorAll('blockquote'), function (q) {
+    q.setAttribute('data-source', 'From Anthropic’s constitution');
+  });
+
+  /* ---- build the table of contents ---- */
+  var heads = article.querySelectorAll('h2, h3');
+  var lists = [document.getElementById('toc'), document.getElementById('toc-mobile')];
+  var links = [];
+
+  lists.forEach(function (root) {
+    if (!root) return;
+    var ul = document.createElement('ul');
+    Array.prototype.forEach.call(heads, function (h) {
+      if (!h.id) return;
+      var li = document.createElement('li');
+      li.className = h.tagName === 'H3' ? 'lvl3' : 'lvl2';
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      ul.appendChild(li);
+      links.push(a);
+    });
+    root.appendChild(ul);
+  });
+
+  /* ---- scroll-spy ---- */
+  var current = null;
+  var seen = new Map();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { seen.set(e.target, e); });
+    var best = null;
+    seen.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      if (!best || e.target.offsetTop < best.target.offsetTop) best = e;
+    });
+    if (!best) return;
+    var id = best.target.id;
+    if (id === current) return;
+    current = id;
+    links.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+    });
+  }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
+  Array.prototype.forEach.call(heads, function (h) { if (h.id) io.observe(h); });
+
+  /* ---- reading progress + back-to-top ---- */
+  var bar = document.querySelector('.progress span');
+  var top = document.querySelector('.totop');
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    if (bar) bar.style.width = pct.toFixed(2) + '%';
+    if (top) top.hidden = h.scrollTop < 900;
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  if (top) top.addEventListener('click', function () {
+    scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+
+</body>
+</html>

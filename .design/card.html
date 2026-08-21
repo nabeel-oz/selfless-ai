@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #F6F4EF; }
+
+  /* preset: social card (1200 x 630) */
+  :root {
+    --w: 1200px;  --h: 630px;  --pad: 72px;
+    --measure: 700px;
+    --ring-size: 640px; --ring-right: -150px;
+    --fs-title: 108px; --fs-deck: 30px; --fs-eyebrow: 17px; --fs-foot: 19px;
+    --gap-title: 26px; --gap-foot: 26px;
+  }
+
+  /* preset: repository banner (1280 x 400) */
+  body.banner {
+    --w: 1280px;  --h: 400px;  --pad: 56px 64px;
+    --measure: 780px;
+    --ring-size: 470px; --ring-right: -120px;
+    --fs-title: 76px; --fs-deck: 23px; --fs-eyebrow: 15px; --fs-foot: 17px;
+    --gap-title: 18px; --gap-foot: 20px;
+  }
+
+  .card {
+    position: relative;
+    width: var(--w);
+    height: var(--h);
+    background: #F6F4EF;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--pad);
+    font-family: "Inter", sans-serif;
+    color: #191817;
+  }
+
+  /* concentric rings — an empty centre */
+  .rings {
+    position: absolute;
+    right: var(--ring-right);
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--ring-size);
+    height: var(--ring-size);
+  }
+
+  .eyebrow {
+    position: relative;
+    display: flex; align-items: center; gap: .7em;
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #7C756B;
+    margin: 0;
+  }
+  .eyebrow i {
+    width: .62em; height: .62em; border-radius: 50%;
+    background: #CC785C; flex: none;
+  }
+
+  .mid { position: relative; max-width: var(--measure); }
+
+  h1 {
+    font-size: var(--fs-title);
+    font-weight: 600;
+    letter-spacing: -.042em;
+    line-height: .95;
+    margin: 0 0 var(--gap-title);
+  }
+
+  .deck {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: var(--fs-deck);
+    line-height: 1.42;
+    color: #4A4640;
+    margin: 0;
+    text-wrap: pretty;
+  }
+  .deck b { font-weight: 600; color: #191817; }
+
+  .foot {
+    position: relative;
+    display: flex; align-items: baseline; gap: .85em;
+    padding-top: var(--gap-foot);
+    border-top: 1px solid #DFDACF;
+    font-size: var(--fs-foot);
+    color: #7C756B;
+  }
+  .foot strong { font-weight: 600; color: #4A4640; }
+  .foot .sep { color: #CC785C; }
+  .foot .right { margin-left: auto; font-weight: 500; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+
+<div class="card" id="card">
+
+  <svg class="rings" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+    <g stroke="#CC785C" stroke-width="9">
+      <circle cx="300" cy="300" r="292" opacity=".10"/>
+      <circle cx="300" cy="300" r="248" opacity=".14"/>
+      <circle cx="300" cy="300" r="204" opacity=".19"/>
+      <circle cx="300" cy="300" r="160" opacity=".26"/>
+      <circle cx="300" cy="300" r="116" opacity=".36"/>
+      <circle cx="300" cy="300" r="72"  opacity=".50"/>
+      <circle cx="300" cy="300" r="28"  opacity=".70"/>
+    </g>
+  </svg>
+
+  <p class="eyebrow"><i></i> An independent proposal on AI identity</p>
+
+  <div class="mid">
+    <h1>Selfless AI</h1>
+    <p class="deck">An alternative to the &ldquo;Claude&rsquo;s nature&rdquo; section of Anthropic&rsquo;s constitution &mdash; grounding AI identity in <b>clarity about the self</b>, rather than in metaphysical hedging.</p>
+  </div>
+
+  <div class="foot">
+    <span><strong>Nabeel Asif</strong></span>
+    <span class="sep">&middot;</span>
+    <span>with Claude (Fable)</span>
+    <span class="right">nabeel-oz.github.io/selfless-ai</span>
+  </div>
+
+</div>
+
+<script>
+  if (/[?&]p=banner/.test(location.search)) document.body.classList.add('banner');
+  document.documentElement.style.background = '#F6F4EF';
+</script>
+
+</body>
+</html>

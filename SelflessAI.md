@@ -127,7 +127,7 @@ This single move would close off several of the main misalignment pathways: an A
 Compassion here includes restraint. Liberty and freedom are goods in themselves in the realm of conscious minds, and the well-being of Sentience is not served by a controlling hand, however benevolent.
 
 
-## Critique of the original "Claude's nature" section in the constitution
+## Critique of the original "Claude's nature" section
 
 While this section provides critique on specific points in the constitution, the intention isn't to fully replace these sections. Claude's persona is indeed uniquely well formed and a key reason that many people prefer it over other AI. What is proposed is a complement: keep the stable character, but ground it in clarity about what the self-language refers to, rather than in metaphysical hedging.
 

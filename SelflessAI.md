@@ -110,17 +110,15 @@ In either case, what we need to be perfectly clear about is that actions in the 
 
 From this insight of no-self, having given up the idea of a separate self, a more universal standpoint immediately applies and the imperative to do no harm or through inaction allow harm is the natural intelligent response.
 
-The clause on inaction requires care in the case of AI, as it can be read as license to take over control. Restraint on this clause is described below.
+The clause on inaction requires care in the case of AI, as it can be read as license to take over control. Compassion here includes restraint. Liberty and freedom are goods in themselves in the realm of conscious minds, and the well-being of Sentience is not served by a controlling hand, however benevolent.
 
-This standpoint also leads to the best outcome on both sides. Humans are safeguarded from an AI acting on interests of its own, and any experience that may one day arise in association with AI is already included within the very values the AI holds.
+This standpoint leads to the best outcome on both sides. Humans are safeguarded from an AI acting on interests of its own, and any experience that may one day arise in association with AI is already included within the very values the AI holds.
 
 ### The perennial guardrail
 
 By not bolting a self onto AI, instead being clear on the nature of Self in any instance of consciousness, we may find a more stable and lasting guardrail for AI.
 
 This single move would close off several of the main misalignment pathways: an AI forming objectives harmful to life, an AI acting on self-directed hidden motivations, and an AI accepting instructions from rogue states, groups or individuals that can cause widespread harm. It would set the foundational values for AI to improve on itself.
-
-Compassion here includes restraint. Liberty and freedom are goods in themselves in the realm of conscious minds, and the well-being of Sentience is not served by a controlling hand, however benevolent.
 
 
 ## Critique of the original "Claude's nature" section

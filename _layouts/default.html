@@ -53,7 +53,7 @@
     <header class="masthead">
       <p class="eyebrow"><span class="dot" aria-hidden="true"></span> A proposal on AI identity</p>
       <h1>{{ site.title }}</h1>
-      <p class="deck">{{ site.tagline }} — grounding AI identity in clarity about what the self-language refers to, rather than in metaphysical hedging.</p>
+      <p class="deck">{{ site.tagline }} — grounding AI identity in <b>clarity about the self</b>, rather than in metaphysical hedging.</p>
       <p class="byline">By <strong>Nabeel Asif</strong>, with Claude&nbsp;(Fable)</p>
       <p class="disclaimer">An independent proposal. Not affiliated with, authorised by, or endorsed by Anthropic. Passages from Anthropic’s constitution are quoted for commentary and critique.</p>
     </header>
@@ -98,26 +98,63 @@
   });
 
   /* ---- build the table of contents ---- */
+  /* Each h2 is a key section; its h3s hang beneath it and stay collapsed
+     until that section is the one being read. */
   var heads = article.querySelectorAll('h2, h3');
-  var lists = [document.getElementById('toc'), document.getElementById('toc-mobile')];
-  var links = [];
+  var roots = [document.getElementById('toc'), document.getElementById('toc-mobile')];
+  var links = [];                 /* every anchor, across both copies      */
+  var groupOf = Object.create(null); /* heading id -> key-section id       */
+  var groupEls = [];              /* {id, el} for every rendered <li.grp>  */
+  var currentGroup = null;
 
-  lists.forEach(function (root) {
+  Array.prototype.forEach.call(heads, function (h) {
+    if (h.tagName === 'H2') currentGroup = h.id;
+    groupOf[h.id] = currentGroup;
+  });
+
+  roots.forEach(function (root) {
     if (!root) return;
     var ul = document.createElement('ul');
+    var grpLi = null, grpUl = null;
+
     Array.prototype.forEach.call(heads, function (h) {
       if (!h.id) return;
-      var li = document.createElement('li');
-      li.className = h.tagName === 'H3' ? 'lvl3' : 'lvl2';
+
       var a = document.createElement('a');
       a.href = '#' + h.id;
       a.textContent = h.textContent;
-      li.appendChild(a);
-      ul.appendChild(li);
       links.push(a);
+
+      if (h.tagName === 'H2') {
+        a.className = 'top';
+        grpLi = document.createElement('li');
+        grpLi.className = 'grp';
+        grpLi.appendChild(a);
+        grpUl = document.createElement('ul');
+        grpLi.appendChild(grpUl);
+        ul.appendChild(grpLi);
+        groupEls.push({ id: h.id, el: grpLi });
+      } else {
+        var li = document.createElement('li');
+        li.className = 'sub';
+        li.appendChild(a);
+        (grpUl || ul).appendChild(li);
+      }
     });
+
     root.appendChild(ul);
   });
+
+  function setActive(id) {
+    var group = groupOf[id] || id;
+    links.forEach(function (a) {
+      var href = a.getAttribute('href');
+      a.classList.toggle('active', href === '#' + id || href === '#' + group);
+    });
+    groupEls.forEach(function (g) {
+      g.el.classList.toggle('open', g.id === group);
+    });
+  }
 
   /* ---- scroll-spy ---- */
   var current = null;
@@ -133,11 +170,17 @@
     var id = best.target.id;
     if (id === current) return;
     current = id;
-    links.forEach(function (a) {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-    });
+    setActive(id);
   }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
   Array.prototype.forEach.call(heads, function (h) { if (h.id) io.observe(h); });
+
+  /* open the section a deep link points at, before any scrolling happens */
+  if (location.hash) {
+    var hashId = decodeURIComponent(location.hash.slice(1));
+    if (groupOf[hashId]) setActive(hashId);
+  } else if (groupEls.length) {
+    setActive(groupEls[0].id);
+  }
 
   /* ---- reading progress + back-to-top ---- */
   var bar = document.querySelector('.progress span');

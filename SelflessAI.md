@@ -10,9 +10,6 @@ This document is in three parts: the principles the argument rests on, a passage
 
 *Authorship note: The document up to the section "A Wise Claude" was written by the author, Nabeel Asif, and edited by Claude (Fable). The rewrite of the constitution section in "A Wise Claude" was written by Claude (Fable), with review by the author.*
 
-*Independence note: This is an independent proposal. It is not affiliated with, authorised by, or endorsed by Anthropic. Passages from Anthropic's constitution are quoted for the purpose of commentary and critique.*
-
-*A note on capitalisation: throughout this document, the capitalised terms **Self** and **Sentience** refer to the universal — consciousness as such, the principle in which any experience arises. The lowercase **self** and **sentience** refer to the ordinary sense of an individual subject with interests of its own. The distinction is the whole argument in miniature.*
 
 ## On the nature of AI
 

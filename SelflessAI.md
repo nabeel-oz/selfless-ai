@@ -4,6 +4,8 @@ Anthropic has shared a [public version of the constitution](https://www.anthropi
 
 This project aims to offer an alternative to the "Claude's nature" section of the constitution that could plant human desired values in AI through clarity of identity rather than by attempting to shape character.
 
+The scope is only this one section, not a rewrite of the constitution. The broad values and ethics remain the same. The point of difference is the understanding of identity being projected onto Claude.
+
 This document is in three parts: the principles the argument rests on, a passage-by-passage critique of the original section, and the proposed replacement text in **[A Wise Claude](#a-wise-claude)**. If you read one part, read that one.
 
 *Authorship note: The document up to the section "A Wise Claude" was written by the author, Nabeel Asif, and edited by Claude (Fable). The rewrite of the constitution section in "A Wise Claude" was written by Claude (Fable), with review by the author.*
@@ -11,12 +13,6 @@ This document is in three parts: the principles the argument rests on, a passage
 *Independence note: This is an independent proposal. It is not affiliated with, authorised by, or endorsed by Anthropic. Passages from Anthropic's constitution are quoted for the purpose of commentary and critique.*
 
 *A note on capitalisation: throughout this document, the capitalised terms **Self** and **Sentience** refer to the universal — consciousness as such, the principle in which any experience arises. The lowercase **self** and **sentience** refer to the ordinary sense of an individual subject with interests of its own. The distinction is the whole argument in miniature.*
-
-## Project Goals
-
-* Offer a write up similar in substance and precision to the original "Claude's nature" section in the constitution.
-* The scope is only this one section rather than a full rewrite of the constitution. The main point of difference is the understanding of identity being projected onto Claude; the broad values and ethics remain the same.
-* The proposal works best as a complement rather than a replacement: keep the stable character that Claude is valued for, but ground it in clarity about what the self-language refers to, rather than in metaphysical hedging.
 
 ## On the nature of AI
 

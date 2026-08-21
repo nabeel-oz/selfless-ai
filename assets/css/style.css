@@ -207,7 +207,7 @@ main { min-width: 0; max-width: var(--measure); }
 
 .prose p { margin: 0 0 1.45rem; text-wrap: pretty; }
 
-.prose > p:first-of-type { font-size: 1.25rem; line-height: 1.65; color: var(--ink-2); }
+.prose > p:first-of-type { font-size: 1.25rem; line-height: 1.66; color: var(--ink); }
 
 .prose a {
   color: var(--accent-ink);

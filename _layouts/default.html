@@ -154,6 +154,16 @@
   if (top) top.addEventListener('click', function () {
     scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  /* ---- deep links: re-anchor once webfonts have settled ---- */
+  if (location.hash) {
+    var settle = function () {
+      var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (t) t.scrollIntoView();
+    };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(settle);
+    addEventListener('load', settle);
+  }
 })();
 </script>
 

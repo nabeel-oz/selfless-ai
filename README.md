@@ -27,11 +27,12 @@ is valued for, but ground it in clarity about what the self-language refers to.
 
 ## Contents
 
-The article is a single document, [`SelflessAI.md`](SelflessAI.md), in three parts:
+The article is a single document, [`SelflessAI.md`](SelflessAI.md), in four parts:
 
 1. **On the nature of AI** — the principles the argument rests on.
 2. **Critique** — a passage-by-passage response to the original “Claude’s nature” section.
 3. **A Wise Claude** — the proposed replacement text, written in the register of the constitution itself.
+4. **Testing the hypothesis** — tests that could help verify the value of grounding AI with the proposed approach.
 
 If you read one part, read *A Wise Claude*.
 

@@ -109,17 +109,26 @@ main { grid-column: 2; min-width: 0; }
   position: sticky; top: 0; align-self: start;
 }
 .rail-inner {
-  padding: 6.5rem 0 3rem;
-  max-height: 100vh; overflow-y: auto;
+  padding: 6.5rem 0 2rem;
+  max-height: 100vh; overflow-y: auto; overscroll-behavior: contain;
+  /* the bar only appears when the contents genuinely overflow, and even
+     then it stays out of the way until the rail is hovered */
   scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
+.rail-inner:hover, .rail-inner:focus-within { scrollbar-color: var(--rule) transparent; }
+.rail-inner::-webkit-scrollbar { width: 6px; }
+.rail-inner::-webkit-scrollbar-button { display: none; }
+.rail-inner::-webkit-scrollbar-track { background: transparent; }
+.rail-inner::-webkit-scrollbar-thumb { background: transparent; border-radius: 3px; }
+.rail-inner:hover::-webkit-scrollbar-thumb { background: var(--rule); }
 .rail-title,
 .rail-foot {
   font-family: var(--sans); font-size: .7rem; font-weight: 600;
   letter-spacing: .1em; text-transform: uppercase;
-  color: var(--ink-3); margin: 0 0 1rem;
+  color: var(--ink-3); margin: 0 0 .75rem;
 }
-.rail-foot { margin: 1.75rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--rule-soft); }
+.rail-foot { margin: 1.25rem 0 0; padding-top: 1rem; border-top: 1px solid var(--rule-soft); }
 .rail-foot a { color: var(--ink-3); text-decoration: none; transition: color .15s; }
 .rail-foot a:hover { color: var(--accent-ink); }
 
@@ -129,7 +138,7 @@ main { grid-column: 2; min-width: 0; }
   display: block;
   font-family: var(--sans); font-size: .8125rem; line-height: 1.45;
   color: var(--ink-3); text-decoration: none;
-  padding: .3rem 0 .3rem .9rem;
+  padding: .22rem 0 .22rem .9rem;
   border-left: 2px solid var(--rule-soft);
   transition: color .15s, border-color .15s;
 }
@@ -142,7 +151,7 @@ main { grid-column: 2; min-width: 0; }
 #toc a.top, #toc-mobile a.top {
   font-size: .9375rem; font-weight: 600; line-height: 1.35;
   color: var(--ink-2);
-  padding: .5rem 0 .5rem .9rem;
+  padding: .42rem 0 .42rem .9rem;
 }
 #toc a.top:hover, #toc-mobile a.top:hover { color: var(--ink); }
 #toc a.top.active, #toc-mobile a.top.active { color: var(--accent-ink); font-weight: 600; }
